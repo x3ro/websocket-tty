@@ -12,6 +12,12 @@ The server allows to execute **arbitrary commands**, only limited by the permiss
 
 
 
+## How to use?
+
+Clone, run `go get` (because we depend on go.net/websocket) and then `go run main.go -path initial/working/directory`. You can now send websocket messages to `http://localhost:8080/exec`, according to the protocol defined below.
+
+
+
 ## How are commands executed?
 
 They're executed using `exec.Command`, wrapped into a `bash -c 'your command'` invocation. This allows you to do bash stuff like `touch bar && cat foo > bar`.
