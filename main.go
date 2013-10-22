@@ -21,29 +21,6 @@ type Response struct {
 }
 
 
-func splitCmd(cmd string) []string {
-
-    x := strings.Split(cmd, "\"")
-    cmds := []string{};
-    for i:=0; i<len(x); i++ {
-        if i%2 == 0 {
-            cmds = append(cmds, strings.Split(strings.Trim(x[i], " "), " ")...)
-        } else {
-            cmds = append(cmds, x[i])
-        }
-    }
-
-    cmds1 := []string{};
-    for i:=0; i<len(cmds); i++ {
-        if cmds[i] != "" {
-            cmds1 = append(cmds1, cmds[i])
-        }
-    }
-
-    return cmds1
-}
-
-
 func execHandler(ws *websocket.Conn) {
     log.Println("foobar")
 
@@ -72,8 +49,6 @@ func execHandler(ws *websocket.Conn) {
             out = []byte("Changed directory to " + newwd)
         }
     } else {
-        //cmds := splitCmd(data.Cmd)
-        //out, err := exec.Command(cmds[0], cmds[1:]...).CombinedOutput()
         out, err = exec.Command("bash", []string{"-c", data.Cmd}...).CombinedOutput()
     }
 
