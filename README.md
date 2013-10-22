@@ -12,6 +12,14 @@ The server allows to execute **arbitrary commands**, only limited by the permiss
 
 
 
+## How are commands executed?
+
+They're executed using `exec.Command`, wrapped into a `bash -c 'your command'` invocation. This allows you to do bash stuff like `touch bar && cat foo > bar`.
+
+An exception is the `cd` command. Since commands executed using `exec.Command` run using the parent processes working directory, running `bash -c 'cd ..'` would be quite useless, as it doesn't change the working directory of the parent. Thus if the command begins with `cd ` (cd followed by a space), the command is not run using `bash -c` and instead changes the working directory of the `websocket-tty` process.
+
+
+
 ## "Protocol"
 
 After spending several minutes researching state of the art command execution protocols, I came up with the following JSON messages.
