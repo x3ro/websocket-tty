@@ -1,4 +1,4 @@
-# socket-tty
+# websocket-tty
 
 This incredible piece of software allows you to execute shell commands on your local machine, from your browser.
 
