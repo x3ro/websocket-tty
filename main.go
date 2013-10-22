@@ -5,14 +5,13 @@ import (
     "net/http"
     "os/exec"
     "log"
-    "strings"
     "os"
     "path"
     "flag"
 )
 
-type Cmd struct {
-    Cmd string `json:"cmd"`
+type Request struct {
+    Cmd string
 }
 
 type Response struct {
@@ -20,11 +19,9 @@ type Response struct {
     Error string
 }
 
-
 func execHandler(ws *websocket.Conn) {
-    log.Println("foobar")
+    var data Request
 
-    var data Cmd
     err := websocket.JSON.Receive(ws, &data)
     if err != nil {
         log.Fatal(err)
