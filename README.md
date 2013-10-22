@@ -1,6 +1,6 @@
 # websocket-tty
 
-This incredible piece of software allows you to execute shell commands on your local machine, from your browser.
+This incredible piece of software allows you to execute shell commands on your local machine, from your browser, via websockets.
 
 Why would anyone do such a thing, you ask? I'm using it to demonstrate shell-based stuff in my browser-based presentations using [Shower](https://github.com/shower/shower/). As soon as I've made the JavaScript side of this process presentable, I will open-source it and link it here.
 
